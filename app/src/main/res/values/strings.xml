@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Kelime Günlüğü</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_string">Hello blank fragment</string>
+    <string name="welcome_text_string">Kelime Günlüğüm\'e hoşgeldin!</string>
+    <string name="welcome_button_text_string">Öğrenmeye Başla</string>
+    <string name="welcome_content_desc_text_string">Uygulama Logosu (Pembe Bir Kitap)</string>
+    <string name="get_name_textview_string">Öncelikle ismini öğrenerek başlayalım.</string>
+    <string name="get_name_button_text_string">İleri</string>
+    <string name="get_name_edittext_hint_string">İsmini gir</string>
+</resources>

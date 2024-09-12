@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+
+    <fragment
+        android:id="@+id/getNameFragment"
+        android:name="com.eneskaen.kelimegnl.fragments.GetNameFragment"
+        android:label="fragment_get_name"
+        tools:layout="@layout/fragment_get_name" />
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.eneskaen.kelimegnl.fragments.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome"
+        >
+        <action
+            android:id="@+id/action_welcomeFragment_to_getNameFragment"
+            app:destination="@id/getNameFragment" />
+    </fragment>
+</navigation>

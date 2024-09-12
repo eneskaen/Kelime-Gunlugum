@@ -1,0 +1,6 @@
+<!-- res/drawable/text_input_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="20dp"/> <!-- Köşe yarıçapı -->
+    <solid android:color="#FFFFFF"/> <!-- Arka plan rengi -->
+</shape>

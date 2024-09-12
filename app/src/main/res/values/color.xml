@@ -1,0 +1,13 @@
+<resources>
+    <!-- Light mode colors -->
+    <color name="eflatun_primary">#7B1FA2</color>
+    <color name="eflatun_secondary">#BA68C8</color>
+    <color name="eflatun_onBackground">#4A0072</color>
+    <color name="eflatun_onSurface">#6A1B9A</color>
+
+    <!-- Dark mode background -->
+    <color name="eflatun_background">#7B1FA2</color>
+
+    <!-- Common colors -->
+    <color name="white">#FFFFFF</color>
+</resources>
