@@ -10,7 +10,11 @@
         android:id="@+id/getNameFragment"
         android:name="com.eneskaen.kelimegnl.fragments.GetNameFragment"
         android:label="fragment_get_name"
-        tools:layout="@layout/fragment_get_name" />
+        tools:layout="@layout/fragment_get_name" >
+        <action
+            android:id="@+id/action_getNameFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/welcomeFragment"
@@ -22,4 +26,9 @@
             android:id="@+id/action_welcomeFragment_to_getNameFragment"
             app:destination="@id/getNameFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.eneskaen.kelimegnl.fragments.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>

@@ -1,5 +1,6 @@
 package com.eneskaen.kelimegnl.fragments
 
+import android.animation.Animator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,9 +22,10 @@ class WelcomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
-        binding.welcomeApplogo.animation = anims(requireContext()).anim_logo
-        binding.welcomeTextview.animation = anims(requireContext()).anim_text
-        binding.welcomeStartbutton.animation = anims(requireContext()).anim_button
+        binding.welcomeApplogo.animation = anims.getAnimLogo(requireContext())
+        binding.welcomeTextview.animation = anims.getAnimText(requireContext())
+        binding.welcomeStartbutton.animation = anims.getAnimButton(requireContext())
+
 
         binding.welcomeStartbutton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_getNameFragment)

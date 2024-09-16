@@ -14,9 +14,10 @@
         style="@style/Screen"
         android:padding="10dp">
 
+
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:src="@drawable/applogoround"
             android:id="@+id/welcome_applogo"
             android:contentDescription="@string/welcome_content_desc_text_string"
@@ -26,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25"/>
+            app:layout_constraintVertical_bias="0.28"/>
 
 
 

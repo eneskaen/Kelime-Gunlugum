@@ -20,10 +20,13 @@ class GetNameFragment : Fragment() {
     ): View? {
         binding = FragmentGetNameBinding.inflate(inflater, container, false)
 
-        binding.getNameTextview.animation = anims(requireContext()).anim_text
-        binding.getNameTextview.animation = anims(requireContext()).anim_text
-        binding.getNameNextbutton.animation = anims(requireContext()).anim_button
+        binding.getNameTextview.animation = anims.getAnimText(requireContext())
+        binding.getNameNextbutton.animation = anims.getAnimButton(requireContext())
+        binding.getNameInputlayout.animation = anims.getAnimButton(requireContext())
 
+        binding.getNameNextbutton.setOnClickListener {
+
+        }
         // Inflate the layout for this fragment
         return binding.root
     }

@@ -4,10 +4,13 @@ import android.content.Context
 import android.view.animation.AnimationUtils
 import com.eneskaen.kelimegnl.R
 
-class anims(context : Context) {
+abstract class anims{
 
-    val anim_logo = AnimationUtils.loadAnimation(context, R.anim.anim_logo)
-    val anim_text = AnimationUtils.loadAnimation(context, R.anim.anim_text)
-    val anim_button = AnimationUtils.loadAnimation(context, R.anim.anim_button)
+    companion object{
+        fun getAnimLogo(context : Context) = AnimationUtils.loadAnimation(context, R.anim.anim_logo)
+        fun getAnimText(context : Context) = AnimationUtils.loadAnimation(context, R.anim.anim_text)
+        fun getAnimButton(context : Context) = AnimationUtils.loadAnimation(context, R.anim.anim_button)
+    }
+
 
 }

@@ -8,4 +8,6 @@
     <string name="get_name_textview_string">Öncelikle ismini öğrenerek başlayalım.</string>
     <string name="get_name_button_text_string">İleri</string>
     <string name="get_name_edittext_hint_string">İsmini gir</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
