@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.kapt") version "2.0.20"
 }
 
 android {
@@ -54,6 +55,19 @@ dependencies {
 
     //Circular ImageView
     implementation(libs.circleimageview)
+
+    //Room Database
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:2.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:2.0.0")
+
+    //Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.5")
 
 
 

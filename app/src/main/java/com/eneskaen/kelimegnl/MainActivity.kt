@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
-
         val navGetName = supportFragmentManager.findFragmentById(R.id.nav_graph)
 
     }

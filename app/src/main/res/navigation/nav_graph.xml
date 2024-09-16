@@ -12,8 +12,8 @@
         android:label="fragment_get_name"
         tools:layout="@layout/fragment_get_name" >
         <action
-            android:id="@+id/action_getNameFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            android:id="@+id/action_getNameFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
 
     <fragment
@@ -26,9 +26,8 @@
             android:id="@+id/action_welcomeFragment_to_getNameFragment"
             app:destination="@id/getNameFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/infoFragment"
-        android:name="com.eneskaen.kelimegnl.fragments.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.eneskaen.kelimegnl.MainActivity"
+        android:label="MainActivity" />
 </navigation>

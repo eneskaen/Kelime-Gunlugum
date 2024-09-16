@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.eneskaen.kelimegnl.R
 import com.eneskaen.kelimegnl.anims.anims
 import com.eneskaen.kelimegnl.databinding.FragmentGetNameBinding
@@ -25,6 +26,15 @@ class GetNameFragment : Fragment() {
         binding.getNameInputlayout.animation = anims.getAnimButton(requireContext())
 
         binding.getNameNextbutton.setOnClickListener {
+
+            val name = binding.getNameInputlayout.editText?.text.toString().trim()
+            if (name.isNotEmpty()){
+
+                findNavController().navigate(R.id.action_getNameFragment_to_mainActivity)
+            }
+            else{
+                binding.getNameInputlayout.error = "Lütfen bir isim giriniz"
+            }
 
         }
         // Inflate the layout for this fragment
