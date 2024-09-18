@@ -36,18 +36,18 @@ class GetNameFragment : Fragment() {
         userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
 
         binding.getNameTextview.animation = anims.getAnimText(requireContext())
-        binding.getNameNextbutton.animation = anims.getAnimButton(requireContext())
-        binding.getNameInputlayout.animation = anims.getAnimButton(requireContext())
+        binding.getNameButtonCardView.animation = anims.getAnimButton(requireContext())
+        binding.getNameTextInputLayout.animation = anims.getAnimButton(requireContext())
 
-        binding.getNameNextbutton.setOnClickListener {
+        binding.getNameButtonCardView.setOnClickListener {
 
-            val name = binding.getNameInputlayout.editText?.text.toString().trim()
+            val name = binding.getNameTextInputLayout.editText?.text.toString().trim()
             if (name.isNotEmpty()){
                 userViewModel.insert(User(0, name))
                 findNavController().navigate(R.id.action_getNameFragment_to_mainActivity)
             }
             else{
-                binding.getNameInputlayout.error = "Lütfen bir isim giriniz"
+                binding.getNameTextInputLayout.error = "Lütfen bir isim giriniz"
             }
         }
         // Inflate the layout for this fragment

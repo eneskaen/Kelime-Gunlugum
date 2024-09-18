@@ -3,6 +3,7 @@ package com.eneskaen.kelimegnl
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +19,7 @@ import com.eneskaen.kelimegnl.model.User
 import com.eneskaen.kelimegnl.repository.UserRepository
 import com.eneskaen.kelimegnl.viewmodel.UserViewModel
 import com.eneskaen.kelimegnl.viewmodel.UserViewModelFactory
+import kotlinx.coroutines.delay
 
 class StartingActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -26,6 +28,7 @@ class StartingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_starting)
         enableEdgeToEdge()
+
         val userDao = UserDatabase.getDatabase(this).userDao()
         val repository = UserRepository(userDao)
 
@@ -33,11 +36,7 @@ class StartingActivity : AppCompatActivity() {
         val factory = UserViewModelFactory(repository)
         userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
 
-
-
         userViewModel.user.observe(this){
-
-
             if (it != null){
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

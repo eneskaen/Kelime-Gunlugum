@@ -7,14 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".StartingActivity">
 
+    <ProgressBar
+        android:id="@+id/starting_progressbar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:indeterminateTint="#D3C1FF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
         android:visibility="gone"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"

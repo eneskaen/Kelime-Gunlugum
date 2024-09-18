@@ -10,4 +10,6 @@
 
     <!-- Common colors -->
     <color name="white">#FFFFFF</color>
+
+    <color name="ellipse_66_color">#E2D6FF</color>
 </resources>

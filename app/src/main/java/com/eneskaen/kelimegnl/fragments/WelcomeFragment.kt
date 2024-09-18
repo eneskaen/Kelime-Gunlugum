@@ -22,12 +22,13 @@ class WelcomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
-        binding.welcomeApplogo.animation = anims.getAnimLogo(requireContext())
+
+
         binding.welcomeTextview.animation = anims.getAnimText(requireContext())
-        binding.welcomeStartbutton.animation = anims.getAnimButton(requireContext())
+        binding.welcomeTextview2.animation = anims.getAnimText(requireContext())
+        binding.welcomeNextCardViewButton.animation = anims.getAnimButton(requireContext())
 
-
-        binding.welcomeStartbutton.setOnClickListener {
+        binding.welcomeNextCardViewButton.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_getNameFragment)
         }
 

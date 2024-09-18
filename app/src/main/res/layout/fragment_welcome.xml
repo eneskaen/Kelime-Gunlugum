@@ -9,58 +9,97 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_welcome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         style="@style/Screen"
-        android:padding="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/ellipse_66"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:background="@drawable/ellipse_66_shape"
+            android:translationX="-154dp"
+            android:translationY="-38dp"
+            android:alpha="0.65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/vector_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.65"
+            android:src="@drawable/vector_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
+            android:id="@+id/vector_undraw"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/applogoround"
-            android:id="@+id/welcome_applogo"
-            android:contentDescription="@string/welcome_content_desc_text_string"
-            app:civ_border_width="0dp"
-            android:layout_gravity="center"
+            android:contentDescription="vector"
+            android:alpha="0.8"
+            android:src="@drawable/vector_manypixels"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.28"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
         <TextView
             android:id="@+id/welcome_textview"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
             android:text="@string/welcome_text_string"
             android:textAlignment="center"
-            style="@style/Text"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintTop_toBottomOf="@+id/vector_undraw" />
 
-
-        <Button
-            android:id="@+id/welcome_startbutton"
-            style="@style/Button"
+        <TextView
+            android:id="@+id/welcome_textview2"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginHorizontal="80dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="@string/fragment_welcome_textview_2_string"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/welcomeNextCardViewButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_textview"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/welcomeNextCardViewButton"
+            style="@style/Card"
+            android:shadowColor="@android:color/black"
             android:layout_marginHorizontal="30dp"
-            android:paddingVertical="16dp"
-            android:text="@string/welcome_button_text_string"
-            android:textSize="14sp"
-            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97" />
+            app:layout_constraintVertical_bias="0.97"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/welcome_button_text_string"
+                style="@style/TextInButton"/>
+        </androidx.cardview.widget.CardView>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

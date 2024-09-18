@@ -13,22 +13,56 @@
         style="@style/Screen"
         tools:context=".fragments.GetNameFragment">
 
+        <View
+            android:id="@+id/ellipse_66"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:background="@drawable/ellipse_66_shape"
+            android:translationX="-154dp"
+            android:translationY="-38dp"
+            android:alpha="0.65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/vector_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.65"
+            android:src="@drawable/vector_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/get_name_textview"
+            android:id="@+id/getNameTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Text"
             android:text="@string/get_name_textview_string"
             android:textAlignment="center"
             android:textSize="18sp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toTopOf="@id/vector_undraw"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+        <ImageView
+            android:id="@+id/vector_undraw"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="vector"
+            android:src="@drawable/vector_manypixels"
+            android:alpha="0.8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/get_name_inputlayout"
+            android:id="@+id/getNameTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -36,20 +70,22 @@
             android:singleLine="true"
             android:textSize="18sp"
             android:maxEms="20"
+            app:boxBackgroundColor="@null"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
             style="@style/TextInputLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vector_undraw"
+            app:layout_constraintBottom_toTopOf="@id/getNameButtonCardView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/getNameTextInputEditText"
                 android:maxLines="1"
                 style="@style/TextInputEditText"
                 android:inputType="textPersonName"
@@ -57,21 +93,27 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/get_name_nextbutton"
-            style="@style/Button"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/getNameButtonCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_marginHorizontal="30dp"
-            android:paddingVertical="16dp"
-            android:text="@string/get_name_button_text_string"
-            android:textSize="14sp"
-            app:cornerRadius="10dp"
+            style="@style/Card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.97" />
+            app:layout_constraintVertical_bias="0.97"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/get_name_button_text_string"
+                style="@style/TextInButton"/>
+        </androidx.cardview.widget.CardView>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
