@@ -103,7 +103,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackground"
                     android:text="@string/welcome_button_text_string"
                     android:layout_centerInParent="true"
                     style="@style/TextInButton"/>

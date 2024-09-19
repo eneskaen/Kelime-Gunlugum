@@ -15,4 +15,5 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         userRepository.insert(user)
     }
 
+
 }
