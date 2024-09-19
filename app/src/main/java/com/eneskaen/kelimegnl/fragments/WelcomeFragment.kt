@@ -22,8 +22,7 @@ class WelcomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
-
-
+        
         binding.welcomeTextview.animation = anims.getAnimText(requireContext())
         binding.welcomeTextview2.animation = anims.getAnimText(requireContext())
         binding.welcomeNextCardViewButton.animation = anims.getAnimButton(requireContext())

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +22,7 @@ class GetNameFragment : Fragment() {
 
     lateinit var binding : FragmentGetNameBinding
     private lateinit var userViewModel : UserViewModel
+    private var selectedOption: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,15 +37,16 @@ class GetNameFragment : Fragment() {
         val factory = UserViewModelFactory(repository)
         userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
 
-        binding.getNameTextview.animation = anims.getAnimText(requireContext())
-        binding.getNameButtonCardView.animation = anims.getAnimButton(requireContext())
-        binding.getNameTextInputLayout.animation = anims.getAnimButton(requireContext())
+        setUpSeekBar()
+
+        setUpAnims()
+
 
         binding.getNameButtonCardView.setOnClickListener {
 
             val name = binding.getNameTextInputLayout.editText?.text.toString().trim()
             if (name.isNotEmpty()){
-                userViewModel.insert(User(0, name))
+                userViewModel.insert(User(0, name, selectedOption))
                 findNavController().navigate(R.id.action_getNameFragment_to_mainActivity)
             }
             else{
@@ -52,5 +55,40 @@ class GetNameFragment : Fragment() {
         }
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    private fun setUpAnims() {
+        binding.getNameTextview.animation = anims.getAnimText(requireContext())
+        binding.getNameButtonCardView.animation = anims.getAnimButton(requireContext())
+        binding.getNameTextInputLayout.animation = anims.getAnimButton(requireContext())
+        binding.getNameSeekBar.animation = anims.getAnimText(requireContext())
+        binding.getNameSelectedOptionTextView.animation = anims.getAnimText(requireContext())
+    }
+
+    private fun setUpSeekBar() {
+        val options = arrayOf("A1", "A2", "B1", "B2", "C1")
+        binding.getNameSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (options[progress].equals("A1")) {
+                    binding.getNameSelectedOptionTextView.text = "Başlangıç seviyesi veya A1"
+                }
+                else if (options[progress].equals("C1")) {
+                    binding.getNameSelectedOptionTextView.text = "C1 veya üstü"
+                }
+                else{
+                    binding.getNameSelectedOptionTextView.text = options[progress]
+                }
+
+
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                selectedOption = binding.getNameSeekBar.progress
+            }
+
+        })
     }
 }
