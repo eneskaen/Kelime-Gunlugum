@@ -32,7 +32,8 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <style name="Card">
+    <style name="Card" parent="@style/Widget.Material3.CardView.Elevated">
+        <item name="background">@drawable/cardview_button_ripple</item>
         <item name="cardElevation">10dp</item>
         <item name="cardBackgroundColor">@color/white</item>
         <item name="cardCornerRadius">15dp</item>

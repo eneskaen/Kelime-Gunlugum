@@ -42,7 +42,7 @@ class GetNameFragment : Fragment() {
         setUpAnims()
 
 
-        binding.getNameButtonCardView.setOnClickListener {
+        binding.getNameNextButton.setOnClickListener {
 
             val name = binding.getNameTextInputLayout.editText?.text.toString().trim()
             if (name.isNotEmpty()){

@@ -127,20 +127,30 @@
             android:layout_height="55dp"
             android:layout_marginHorizontal="30dp"
             style="@style/Card"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.97"
             >
-            <TextView
+            <RelativeLayout
+                android:id="@+id/getNameNextButton"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/get_name_button_text_string"
-                style="@style/TextInButton"/>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/get_name_button_text_string"
+                    android:layout_centerInParent="true"
+                    style="@style/TextInButton"/>
+            </RelativeLayout>
 
+        </androidx.cardview.widget.CardView>
 
 
 
