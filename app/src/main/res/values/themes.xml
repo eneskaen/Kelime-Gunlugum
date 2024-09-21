@@ -1,61 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- App'ın varsayılan teması -->
-    <style name="Theme.KelimeGunlugu" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.KelimeGunlugu" parent="Theme.Material3.Light.NoActionBar">
         <!-- Tema öğelerini buraya ekleyebilirsiniz -->
         <!-- Varsayılan buton stili -->
-        <item name="buttonStyle">@style/Button</item>
-    </style>
-
-    <!-- Light mode colors -->
-    <!-- Screen background if light mode on -->
-    <style name="Screen" parent="Theme.Material3.Light">
-        <item name="android:background">#FFF</item>
-    </style>
-
-    <!-- Text color if light mode on -->
-    <style name="Text">
-        <item name="android:textColor">#544573</item>
-        <item name="android:fontFamily">@font/poppins</item>
-    </style>
-
-    <!-- Button style if light mode on -->
-    <style name="Button" parent="Widget.Material3.Button.ElevatedButton">
-        <item name="android:backgroundTint">#5E4886</item>
-        <item name="android:textColor">#FFF</item>
-        <item name="android:elevation">0dp</item>
-        <item name="cornerRadius">15dp</item> <!-- Rounded corners -->
-        <item name="fontFamily">@font/poppins</item>
-    </style>
-
-    <!-- TextInputLayout style if light mode on -->
-    <style name="TextInputLayout">
-        <item name="android:textColorHint">#80544573</item>
-        <item name="android:textColor">#544573</item>
-        <item name="hintTextColor">#80544573</item>
-        <item name="boxStrokeColor">#544573</item>
-        <item name="cursorColor">#544573</item>
-        <item name="boxStrokeWidth">2dp</item>
-    </style>
-
-    <!-- TextInputEditText style if light mode on -->
-    <style name="TextInputEditText">
-        <item name="android:textColor">#544573</item>
-    </style>
-
-    <style name="Card" parent="@style/Widget.Material3.CardView.Elevated">
-        <item name="android:background">@drawable/cardview_button_ripple</item>
-        <item name="cardBackgroundColor">#5E4886</item>
-        <item name="cardElevation">10dp</item>
-        <item name="cardCornerRadius">15dp</item>
-    </style>
-
-    <style name="TextInButton">
-        <item name="android:textColor">#FFF</item>
-        <item name="fontFamily">@font/poppins</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>

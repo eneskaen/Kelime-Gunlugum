@@ -11,18 +11,130 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        style="@style/Screen"
         tools:context=".MainActivity">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/userNameTextView"
-            android:text="Kullanıcı Adı"
-            android:textSize="32sp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <View
+            android:id="@+id/ellipse_66"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:background="@drawable/ellipse_66_shape"
+            android:translationX="-154dp"
+            android:translationY="-38dp"
+            android:alpha="0.65"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/vector_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.65"
+            android:src="@drawable/vector_purple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainActivityUserNameText"
+            android:text="Hoşgeldin Enes Kaan"
+            style="@style/Text"
+            android:fontFamily="@font/inter"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="30dp"/>
+
+        <androidx.cardview.widget.CardView
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="50dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainActivityUserNameText"
+            >
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                style="@style/MainActivityCardViewVector"
+                android:layout_gravity="end|top"
+                android:translationY="-15dp"
+                android:translationX="20dp"
+                android:rotation="20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/mainActivityWordCard"
+                android:background="?attr/selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Günün Kelimesi"
+                    style="@style/Text"
+                    android:textSize="13sp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mainActivityWordText"
+                    style="@style/Text"
+                    android:text="Word Text"
+                    android:textSize="30sp"
+                    android:layout_marginStart="30dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/inter"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/mainActivityWordMeaningText"
+                    android:text="Word Meaning Text"
+                    style="@style/Text"
+                    android:alpha="0.8"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                style="@style/MainActivityView"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:elevation="10dp"
+                >
+                <TextView
+                    android:id="@+id/mainActivityWordEngLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/TextInButton"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:text="A1"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

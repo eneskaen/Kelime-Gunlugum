@@ -3,23 +3,22 @@ able
 abroad
 accept
 accident
-according
+according to
 achieve
 act
 active
 actually
-adult
 advantage
 adventure
 advertise
 advertisement
 advertising
 affect
-after
 against
+ah
 airline
 alive
-all
+all right
 allow
 almost
 alone
@@ -31,9 +30,8 @@ among
 amount
 ancient
 ankle
-any
 anybody
-anymore
+any more
 anyway
 anywhere
 app
@@ -47,7 +45,6 @@ argument
 army
 arrange
 arrangement
-as
 asleep
 assistant
 athlete
@@ -62,7 +59,6 @@ average
 avoid
 award
 awful
-back
 background
 badly
 bar
@@ -70,18 +66,14 @@ baseball
 based
 basketball
 bean
-bear
+bear (animal)
 beat
 beef
-before
 behave
 behaviour
 belong
 belt
 benefit
-best
-better
-between
 billion
 bin
 biology
@@ -94,7 +86,6 @@ blow
 board
 boil
 bone
-book
 borrow
 boss
 bottom
@@ -110,7 +101,6 @@ businessman
 button
 camp
 camping
-can
 care
 careful
 carefully
@@ -129,7 +119,6 @@ chance
 character
 charity
 chat
-check
 chef
 chemistry
 chip
@@ -142,7 +131,6 @@ clear
 clearly
 clever
 climate
-close
 closed
 clothing
 cloud
@@ -171,7 +159,6 @@ context
 continent
 continue
 control
-cook
 cooker
 copy
 corner
@@ -193,11 +180,9 @@ curly
 cycle
 daily
 danger
-dark
 data
 dead
 deal
-dear
 death
 decision
 deep
@@ -230,11 +215,9 @@ divorced
 document
 double
 download
-downstairs
 drama
 drawing
 dream
-drive
 driving
 drop
 drug
@@ -285,12 +268,9 @@ factor
 factory
 fail
 fair
-fall
 fan
-farm
 farming
 fashion
-fat
 fear
 feature
 feed
@@ -299,20 +279,13 @@ fiction
 field
 fight
 figure
-film
-final
 finally
 finger
-finish
-first
 firstly
-fish
 fishing
 fit
 fix
-flat
 flu
-fly
 flying
 focus
 following
@@ -322,14 +295,11 @@ fork
 formal
 fortunately
 forward
-free
 fresh
 fridge
 frog
-fun
 furniture
 further
-future
 gallery
 gap
 gas
@@ -340,7 +310,6 @@ goal
 god
 gold
 golf
-good
 government
 grass
 greet
@@ -350,10 +319,8 @@ guide
 gun
 guy
 habit
-half
 hall
 happily
-have
 headache
 heart
 heat
@@ -364,16 +331,12 @@ hero
 hers
 herself
 hide
-high
 hill
 himself
-his
 hit
 hockey
 hold
 hole
-home
-hope
 huge
 human
 hurt
@@ -426,10 +389,7 @@ lab
 lady
 lake
 lamp
-land
 laptop
-last
-later
 laughter
 law
 lawyer
@@ -445,13 +405,12 @@ less
 level
 lifestyle
 lift
-light
+light (a lamp)
+light (not heavy)
 likely
 link
 listener
-little
 lock
-look
 lorry
 lost
 loud
@@ -472,7 +431,7 @@ material
 mathematics
 maths
 matter
-may
+may modal
 media
 medical
 medicine
@@ -483,7 +442,7 @@ method
 middle
 might
 mind
-mine
+mine (belongs to me)
 mirror
 missing
 mobile
@@ -501,7 +460,6 @@ nature
 nearly
 necessary
 neck
-need
 neither
 nervous
 network
@@ -513,7 +471,6 @@ normally
 notice
 novel
 nowhere
-number
 nut
 ocean
 offer
@@ -527,9 +484,7 @@ organisation
 organise
 original
 ourselves
-outside
 oven
-own
 owner
 pack
 pain
@@ -540,30 +495,26 @@ parking
 particular
 pass
 passenger
-past
 patient
 pattern
-pay
 peace
 penny
 per
+per cent
 perform
 perhaps
 permission
 personality
 pet
 petrol
-photograph
 physical
 physics
 pick
 pilot
 planet
-plant
 plastic
 plate
 platform
-please
 pleased
 pocket
 polite
@@ -576,7 +527,6 @@ possibility
 poster
 power
 predict
-present
 president
 prevent
 print
@@ -603,7 +553,6 @@ push
 quality
 quantity
 queen
-question
 quietly
 race
 railway
@@ -633,7 +582,6 @@ remove
 repair
 replace
 reply
-report
 reporter
 request
 research
@@ -642,7 +590,6 @@ respond
 response
 rest
 review
-ride
 ring
 ring
 rise
@@ -653,7 +600,6 @@ round
 route
 rubbish
 rude
-run
 runner
 running
 sadly
@@ -673,7 +619,7 @@ screen
 search
 season
 seat
-second
+second (next)
 secondly
 secret
 secretary
@@ -707,7 +653,6 @@ ski
 skiing
 skin
 sky
-sleep
 slowly
 smartphone
 smell
@@ -736,10 +681,7 @@ square
 stage
 stair
 stamp
-star
-start
 state
-stay
 steal
 step
 stomach
@@ -761,7 +703,6 @@ suggestion
 suit
 support
 suppose
-sure
 surprise
 surprised
 surprising
@@ -770,7 +711,6 @@ sweet
 symbol
 system
 tablet
-talk
 target
 task
 taste
@@ -779,13 +719,11 @@ technology
 teenage
 temperature
 term
-text
 themselves
 thick
 thief
 thin
 thinking
-third
 thought
 throw
 tidy
@@ -803,7 +741,6 @@ toy
 track
 tradition
 traditional
-train
 trainer
 training
 transport
@@ -820,8 +757,7 @@ uniform
 unit
 united
 unusual
-upstairs
-use
+used to
 user
 usual
 valley
@@ -831,16 +767,13 @@ vehicle
 view
 virus
 voice
-wait
 war
-wash
 washing
 wave
 weak
 web
 wedding
 weight
-welcome
 wet
 wheel
 while

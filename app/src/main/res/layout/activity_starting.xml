@@ -5,6 +5,7 @@
     android:id="@+id/startingActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/Screen"
     tools:context=".StartingActivity">
 
     <ProgressBar

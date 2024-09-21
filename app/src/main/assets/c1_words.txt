@@ -73,7 +73,7 @@ arbitrary
 architectural
 archive
 arena
-arm
+arm (v)
 array
 articulate
 ash
@@ -97,7 +97,6 @@ authentic
 authorize
 auto
 autonomy
-autumn
 availability
 await
 backdrop
@@ -263,7 +262,6 @@ contemplate
 contempt
 contend
 contender
-content
 contention
 continually
 contractor
@@ -293,6 +291,7 @@ costly
 councilor
 counseling
 counselor
+counter (argue)
 counterpart
 countless
 coup
@@ -319,6 +318,7 @@ damaging
 dawn
 debris
 debut
+decision-making
 decisive
 declaration
 dedicated
@@ -402,7 +402,6 @@ donor
 dose
 drain
 drift
-driving
 drown
 dual
 dub
@@ -493,10 +492,8 @@ fiber
 fierce
 filmmaker
 filter
-fine
 firearm
 fiscal
-fit
 flaw
 flawed
 flee
@@ -537,6 +534,8 @@ glory
 governance
 grace
 grasp
+grave (cemetery)
+grave (serious)
 gravity
 grid
 grief
@@ -565,6 +564,7 @@ hazard
 heighten
 heritage
 hierarchy
+high-profile
 hint
 homeland
 hopeful
@@ -660,15 +660,14 @@ irrelevant
 isolation
 judicial
 jurisdiction
-just
 justification
-keen
 kidnap
 kidney
 kingdom
 landlord
 landmark
 lap
+large-scale
 laser
 latter
 lawmaker
@@ -704,6 +703,7 @@ liver
 lobby
 log
 logic
+long-standing
 longtime
 loom
 loop
@@ -756,13 +756,11 @@ minimal
 minimize
 mining
 ministry
-minute
 miracle
 misery
 misleading
 missile
 mob
-mobile
 mobility
 mobilize
 moderate
@@ -781,7 +779,6 @@ naval
 neglect
 neighboring
 nest
-net
 newsletter
 niche
 noble
@@ -797,7 +794,6 @@ notable
 notably
 notify
 notorious
-novel
 nursery
 objection
 oblige
@@ -863,7 +859,6 @@ plunge
 pole
 poll
 pond
-pop
 portfolio
 portray
 postpone
@@ -1009,7 +1004,6 @@ riot
 rip
 ritual
 robust
-rock
 rod
 rookie
 roster
@@ -1022,13 +1016,11 @@ sacrifice
 saint
 sake
 sanction
-say
 scattered
 scope
 screw
 scrutiny
 seal
-secondly
 secular
 seemingly
 segment
@@ -1048,7 +1040,6 @@ shatter
 shed
 sheer
 shipping
-shoot
 shrink
 shrug
 sigh
@@ -1075,7 +1066,6 @@ solely
 solidarity
 solo
 sophomore
-sound
 sovereignty
 spam
 span
@@ -1085,7 +1075,6 @@ specification
 specimen
 spectacle
 spectrum
-spell
 sphere
 spin
 spine
@@ -1111,10 +1100,11 @@ straightforward
 strain
 strand
 strategic
+strip (narrow piece)
 strive
 structural
 stumble
-stun
+stun v.
 submission
 subscriber
 subscription
@@ -1192,10 +1182,8 @@ tobacco
 tolerance
 tolerate
 toll
-top
 torture
 toss
-total
 toxic
 trademark
 trail
@@ -1270,7 +1258,7 @@ warrior
 weaken
 weave
 weed
-well
+well-being
 whatsoever
 whereby
 whip

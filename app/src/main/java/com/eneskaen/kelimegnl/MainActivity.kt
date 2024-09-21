@@ -10,19 +10,22 @@ import com.eneskaen.kelimegnl.database.UserDatabase
 import com.eneskaen.kelimegnl.database.WordDatabase
 import com.eneskaen.kelimegnl.databinding.ActivityMainBinding
 import com.eneskaen.kelimegnl.model.User
+import com.eneskaen.kelimegnl.model.Word
 import com.eneskaen.kelimegnl.repository.UserRepository
 import com.eneskaen.kelimegnl.repository.WordRepository
 import com.eneskaen.kelimegnl.viewmodel.UserViewModel
 import com.eneskaen.kelimegnl.viewmodel.UserViewModelFactory
 import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
+import com.eneskaen.kelimegnl.workmanager.WordWorkManager
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var userViewModel : UserViewModel
     lateinit var wordViewModel : WordViewModel
     lateinit var currentUser : User
-
+    lateinit var currentWord : Word
+    private val englishLevels = arrayOf("A1", "A2", "B1", "B2", "C1")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -46,14 +49,33 @@ class MainActivity : AppCompatActivity() {
 
         userViewModel.user.observe(this){
             currentUser = it
+            WordWorkManager.getRandomWord(wordViewModel, currentUser.engLevel.toString()){
+                it?.let {
+                    currentWord = it
+                    updateCardViewUI(currentWord)
+                }
 
-            wordViewModel.getRandomWord(it.engLevel.toString())
+            }
 
         }
-
-        wordViewModel.randomWord.observe(this){
-            binding.userNameTextView.text = it?.word
+        binding.mainActivityWordCard.setOnClickListener {
+            WordWorkManager.resetWord(wordViewModel, currentUser.engLevel.toString()){
+                it?.let {
+                    currentWord = it
+                    updateCardViewUI(currentWord)
+                }
+            }
         }
+
+
 
     }
+
+    private fun updateCardViewUI(currentWord: Word?) {
+        binding.mainActivityWordText.text = currentWord?.word
+        binding.mainActivityUserNameText.text = "Hoşgeldin ${currentUser.name}"
+        binding.mainActivityWordEngLevel.text = englishLevels[currentUser.engLevel]
+        //DARK MODA ALINCA KELİME DEĞİŞMEMESİ İÇİN RANDOM KELİME ALMA (52.Satır) FONKSİYONUNU MAİNACTİVİTY İÇERİSİNDE DEĞİL DE BİR SİNGLETON İÇİNDE KULLANMAYA ÇALIŞ. SİNGLETON İÇİNDE VERİYİ KONTROL ET.
+    }
+
 }

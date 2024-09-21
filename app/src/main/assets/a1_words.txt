@@ -1,3 +1,4 @@
+a/an
 about
 above
 across
@@ -54,7 +55,7 @@ bag
 ball
 banana
 band
-bank
+bank (money)
 bath
 bathroom
 be
@@ -346,6 +347,7 @@ hard
 hat
 hate
 have
+have to
 he
 head
 health
@@ -377,8 +379,9 @@ however
 hundred
 hungry
 husband
+I
 ice
-icecream
+ice cream
 idea
 if
 imagine
@@ -455,6 +458,7 @@ map
 March
 market
 married
+match (contest)
 May
 maybe
 me
@@ -507,12 +511,14 @@ new
 news
 newspaper
 next
+next to
 nice
 night
 nine
 nineteen
 ninety
 no
+no one
 nobody
 north
 nose
@@ -806,6 +812,7 @@ trip
 trousers
 true
 try
+T-shirt
 Tuesday
 turn
 TV

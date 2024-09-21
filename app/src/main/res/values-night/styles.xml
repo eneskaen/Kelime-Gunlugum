@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Card">
+        <item name="cardBackgroundColor">@color/lightmode_textcolor</item>
+    </style>
+
+    <style name="Screen">
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <!-- Text color if dark mode on -->
+    <style name="Text">
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <!-- Button background if dark mode on -->
+    <style name="Button" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/lightmode_textcolor</item>
+        <item name="cornerRadius">15dp</item>
+        <item name="fontFamily">@font/inter</item>
+    </style>
+
+    <!-- TextInputLayout background if dark mode on -->
+    <style name="TextInputLayout">
+        <item name="android:textColorHint">#80FFFFFF</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="hintTextColor">#80FFFFFF</item>
+        <item name="boxStrokeColor">#FFFFFF</item>
+        <item name="cursorColor">#FFFFFF</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+    <!-- TextInputEditText background if dark mode on -->
+    <style name="TextInputEditText">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="CardButton" parent="@style/Widget.Material3.CardView.Elevated">
+        <item name="background">@drawable/cardview_button_ripple</item>
+        <item name="cardElevation">10dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+
+    <style name="TextInButton">
+        <item name="android:textColor">@color/lightmode_textcolor</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="MainActivityCardViewVector">
+        <item name="android:background">@drawable/vector_translation_icon_white</item>
+    </style>
+
+    <style name="MainActivityView">
+        <item name="android:background">@drawable/round_shape_white</item>
+    </style>
+
+
+</resources>

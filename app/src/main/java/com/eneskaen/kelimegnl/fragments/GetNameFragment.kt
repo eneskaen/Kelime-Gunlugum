@@ -1,16 +1,20 @@
 package com.eneskaen.kelimegnl.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.eneskaen.kelimegnl.R
+import com.eneskaen.kelimegnl.StartingActivity
 import com.eneskaen.kelimegnl.anims.anims
 import com.eneskaen.kelimegnl.dao.WordDAO
 import com.eneskaen.kelimegnl.database.UserDatabase
@@ -67,7 +71,14 @@ class GetNameFragment : Fragment() {
 
                 userViewModel.insert(User(0, name, selectedOption))
                 readWordsFromTextFile()
-                findNavController().navigate(R.id.action_getNameFragment_to_mainActivity)
+                wordViewModel.getRandomWord(userViewModel.user.value?.engLevel.toString())
+                wordViewModel.randomWord.observe(viewLifecycleOwner){
+                    if (it == null){
+                        val intent = Intent(requireContext(), StartingActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+
             }
             else{
                 binding.getNameTextInputLayout.error = "Lütfen bir isim giriniz"
