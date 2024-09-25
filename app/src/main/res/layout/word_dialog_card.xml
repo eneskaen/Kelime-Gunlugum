@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardCornerRadius="15dp"
+        android:layout_marginHorizontal="30dp"
+        style="@style/Card"
+        app:cardElevation="15dp"
+        >
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="@style/MainActivityView"
+            android:layout_gravity="end|top"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:elevation="10dp">
+
+            <TextView
+                android:id="@+id/wordDialogEngLevelText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/TextInButton"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="A1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            style="@style/MainActivityCardViewVector"
+            android:layout_gravity="end|top"
+            android:translationY="-30dp"
+            android:translationX="40dp"
+            android:rotation="20"
+            android:alpha="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="26dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Günün Kelimesi"
+                style="@style/Text"
+                android:textSize="13sp"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/round_volume_up_24"
+                    android:id="@+id/wordDialogSoundButton" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wordDialogWordText"
+                    style="@style/Text"
+                    android:text="Word Text"
+                    android:textSize="30sp"
+                    android:layout_marginStart="10dp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/inter"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightmode_textcolor"
+                    android:layout_marginHorizontal="30dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wordDialogMeaningText"
+                    android:text="1. Word Meaning Text"
+                    style="@style/Text"
+                    android:textStyle="bold|italic"
+                    android:alpha="0.8"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Meaning"
+                        android:id="@+id/wordDialogMeaningType"
+                        style="@style/Text"
+                        android:alpha="0.8"
+                        android:textSize="11sp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginVertical="10dp"  />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Anlamı"
+                        style="@style/Text"
+                        android:alpha="0.8"
+                        android:gravity="end"
+                        android:textSize="11sp"
+                        android:textAlignment="textEnd"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginVertical="10dp" />
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightmode_textcolor"
+                    android:layout_marginHorizontal="30dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/wordDialogLinear2"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wordDialogMeaning2Text"
+                    android:text="1. Word Meaning Text"
+                    style="@style/Text"
+                    android:textStyle="bold|italic"
+                    android:alpha="0.8"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Meaning"
+                        android:id="@+id/wordDialogMeaning2Type"
+                        style="@style/Text"
+                        android:alpha="0.8"
+                        android:textSize="11sp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginVertical="10dp"  />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Anlamı"
+                        style="@style/Text"
+                        android:alpha="0.8"
+                        android:gravity="end"
+                        android:textSize="11sp"
+                        android:textAlignment="textEnd"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginVertical="10dp" />
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightmode_textcolor"
+                    android:layout_marginHorizontal="30dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/wordDialogLinear3"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wordDialogMeaning3Text"
+                    android:text="1. Word Meaning Text"
+                    style="@style/Text"
+                    android:textStyle="bold|italic"
+                    android:alpha="0.8"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginVertical="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Meaning"
+                        android:id="@+id/wordDialogMeaning3Type"
+                        style="@style/Text"
+                        android:alpha="0.8"
+                        android:textSize="11sp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginVertical="10dp"  />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Anlamı"
+                        style="@style/Text"
+                        android:alpha="0.8"
+                        android:gravity="end"
+                        android:textSize="11sp"
+                        android:textAlignment="textEnd"
+                        android:fontFamily="@font/poppins"
+                        android:layout_marginVertical="10dp" />
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>

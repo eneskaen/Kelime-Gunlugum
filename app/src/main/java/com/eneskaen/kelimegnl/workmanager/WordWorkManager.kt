@@ -1,14 +1,14 @@
 package com.eneskaen.kelimegnl.workmanager
 
+import android.util.Log
+import android.widget.Toast
 import com.eneskaen.kelimegnl.model.Word
 import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 
 object WordWorkManager {
     private var currentWord: Word? = null
     private var currentEngLevel: String? = null
-
     fun getRandomWord(wordViewModel: WordViewModel, engLevel: String, callback: (Word?) -> Unit) {
-        // Eğer engLevel değiştiyse veya kelime daha önce alınmamışsa
         if (currentEngLevel != engLevel || currentWord == null) {
             currentEngLevel = engLevel
             wordViewModel.getRandomWord(engLevel)
@@ -17,7 +17,6 @@ object WordWorkManager {
                 callback(word)
             }
         } else {
-            // Eğer kelime daha önce alındıysa, onu geri döndür
             callback(currentWord)
         }
     }

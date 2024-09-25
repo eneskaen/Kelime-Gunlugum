@@ -1,5 +1,6 @@
 package com.eneskaen.kelimegnl.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -28,7 +29,10 @@ import com.eneskaen.kelimegnl.viewmodel.UserViewModel
 import com.eneskaen.kelimegnl.viewmodel.UserViewModelFactory
 import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStreamReader
 
 class GetNameFragment : Fragment() {
@@ -70,7 +74,7 @@ class GetNameFragment : Fragment() {
             if (name.isNotEmpty()){
 
                 userViewModel.insert(User(0, name, selectedOption))
-                readWordsFromTextFile()
+                readWordsFromTextFile(requireContext())
                 wordViewModel.getRandomWord(userViewModel.user.value?.engLevel.toString())
                 wordViewModel.randomWord.observe(viewLifecycleOwner){
                     if (it == null){
@@ -88,26 +92,21 @@ class GetNameFragment : Fragment() {
         return binding.root
     }
 
-    private fun readWordsFromTextFile() {
+    private fun readWordsFromTextFile(context: Context) {
         val words = mutableListOf<Word>()
-        val fileNames = arrayOf("a1_words.txt", "a2_words.txt", "b1_words.txt", "b2_words.txt", "c1_words.txt")
-        fileNames.forEachIndexed {index , fileName ->
-            try {
-                val inputStream = requireContext().assets.open(fileName)
-                val reader = BufferedReader(InputStreamReader(inputStream))
-                reader.useLines { 
-                    it.forEach {word ->
-                       if (word.isNotEmpty()){
-                           words.add(Word(id = 0, word = word.trim(), level = index, meaning = "", definition = ""))
-                       }
-                    }
-                }
-            } catch (e : Exception){
-                e.printStackTrace()
-            }
+        val fileNames = arrayOf("a1_words.json", "a2_words.json", "b1_words.json", "b2_words.json", "c1_words.json")
+        fileNames.forEach { fileName ->
+            val inputStream = context.assets.open(fileName)
+            val jsonString = inputStream.bufferedReader().use { it.readText() }
+
+            val wordListType = object : TypeToken<List<Word>>() {}.type
+            val wordList: List<Word> = Gson().fromJson(jsonString, wordListType)
+            words.addAll(wordList)
         }
         insertWordsToRoomDB(words)
     }
+
+
 
     private fun insertWordsToRoomDB(words: List<Word>) {
         wordViewModel.insertWords(words)
