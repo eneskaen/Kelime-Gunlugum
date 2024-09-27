@@ -9,6 +9,10 @@ class WordRepository(private val wordDao: WordDAO) {
         wordDao.insertAll(words)
     }
 
+    suspend fun insertSingleWord(word: Word){
+        wordDao.insertSingleWord(word)
+    }
+
     suspend fun getRandomWord(level: String): Word? {
         return wordDao.getRandomWord(level)
     }
@@ -16,5 +20,10 @@ class WordRepository(private val wordDao: WordDAO) {
     suspend fun getWordByString(wordString: String): Word? {
         return wordDao.getWordByString(wordString)
     }
+
+    suspend fun getWordById(wordId: Int?): Word? {
+        return wordDao.getWordById(wordId)
+    }
+
 
 }

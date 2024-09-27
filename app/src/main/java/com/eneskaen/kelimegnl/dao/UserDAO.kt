@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.eneskaen.kelimegnl.model.User
 
 @Dao
@@ -18,5 +19,8 @@ abstract interface UserDAO {
 
     @Query("select * from users limit 1")
     fun getUser(): LiveData<User>
+
+    @Update
+    suspend fun update(user: User)
 
 }

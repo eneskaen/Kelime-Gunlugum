@@ -4746,10 +4746,10 @@
         "meaning": "ihtibari (sıfat)",
         "meaning2": "deneysel (sıfat)",
         "meaning3": "deneyime dayalı olarak (sıfat)",
-        "exampleSentence": "Empire means power.",
+        "exampleSentence": "Empirical studies provide valuable insights.",
         "isLearned": false,
         "learnedDate": "",
-        "exampleSentenceTranslation": "İmparatorluk güç demektir."
+        "exampleSentenceTranslation": "Deneysel çalışmalar değerli bilgiler sunar."
     },
     {
         "word": "empower",
@@ -8104,7 +8104,7 @@
         "exampleSentence": "I wrote a memo.",
         "isLearned": false,
         "learnedDate": "",
-        "exampleSentenceTranslation": "Bir not yadım."
+        "exampleSentenceTranslation": "Bir not yazdım."
     },
     {
         "word": "memoir",

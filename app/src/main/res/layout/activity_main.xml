@@ -33,112 +33,113 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainActivityUserNameText"
-            android:text="Hoşgeldin Enes Kaan"
-            style="@style/Text"
-            android:fontFamily="@font/inter"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginHorizontal="30dp"/>
-
-        <androidx.cardview.widget.CardView
-            style="@style/Card"
-            android:id="@+id/mainActivityWordCardView"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="50dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainActivityUserNameText"
-            >
-
-            <View
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                style="@style/MainActivityCardViewVector"
-                android:layout_gravity="end|top"
-                android:translationY="-15dp"
-                android:translationX="20dp"
-                android:rotation="20"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/mainActivityWordCard"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="wrap_content"
+                android:id="@+id/mainActivityUserNameText"
+                android:text="Hoşgeldin Enes Kaan"
+                style="@style/Text"
+                android:fontFamily="@font/inter"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="50dp"
+                android:layout_marginHorizontal="30dp"/>
 
-                <TextView
-                    style="@style/Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Günün Kelimesi"
-                    android:textAlignment="center"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/mainActivityWordText"
-                    style="@style/Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:fontFamily="@font/inter"
-                    android:text="Word Text"
-                    android:textAlignment="center"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/mainActivityWordMeaningText"
-                    style="@style/Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="10dp"
-                    android:alpha="0.8"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/poppins"
-                    android:text="Word Meaning Text"
-                    android:textSize="13sp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                style="@style/MainActivityView"
-                android:layout_gravity="end|bottom"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:elevation="10dp"
+            <androidx.cardview.widget.CardView
+                style="@style/Card"
+                android:id="@+id/mainActivityWordCardView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="50dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mainActivityUserNameText"
                 >
-                <TextView
-                    android:id="@+id/mainActivityWordEngLevel"
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    style="@style/MainActivityCardViewVector"
+                    android:layout_gravity="end|top"
+                    android:translationY="-15dp"
+                    android:translationX="20dp"
+                    android:rotation="20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/mainActivityWordCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    style="@style/TextInButton"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:text="A1"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        style="@style/Text"
+                        android:id="@+id/mainActivityWordCountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7/10"
+                        android:textAlignment="center"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/mainActivityWordText"
+                        style="@style/Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:fontFamily="@font/inter"
+                        android:text="Word Text"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/mainActivityWordMeaningText"
+                        style="@style/Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginVertical="10dp"
+                        android:alpha="0.8"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins"
+                        android:text="Word Meaning Text"
+                        android:textSize="13sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    style="@style/MainActivityView"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:elevation="10dp"
+                    >
+                    <TextView
+                        android:id="@+id/mainActivityWordEngLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/TextInButton"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:text="A1"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -7,7 +7,6 @@ import com.eneskaen.kelimegnl.R
 abstract class anims{
 
     companion object{
-        fun getAnimLogo(context : Context) = AnimationUtils.loadAnimation(context, R.anim.anim_logo)
         fun getAnimText(context : Context) = AnimationUtils.loadAnimation(context, R.anim.anim_text)
         fun getAnimButton(context : Context) = AnimationUtils.loadAnimation(context, R.anim.anim_button)
     }

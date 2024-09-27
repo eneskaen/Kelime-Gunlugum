@@ -12,11 +12,18 @@ interface WordDAO {
     @Insert
     suspend fun insertAll(words: List<Word>)
 
+    @Insert
+    suspend fun insertSingleWord(word: Word)
+
     @Query("select * from words where level = :level order by random() limit 1")
     suspend fun getRandomWord(level: String): Word?
 
     @Query("select * from words where word = :wordString")
     suspend fun getWordByString(wordString: String): Word?
+
+    @Query("select * from words where id = :wordId limit 1")
+    suspend fun getWordById(wordId: Int?): Word?
+
 
 
 }

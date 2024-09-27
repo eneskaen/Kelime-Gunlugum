@@ -8,5 +8,8 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
     val name: String,
-    val engLevel: Int = 0
+    val engLevel: Int = 0,
+    val dailyWordLimit : Int = 10,
+    val dailyWordCount : Int = 0,
+    val lastWordId: Int?
 )

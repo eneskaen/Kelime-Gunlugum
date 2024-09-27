@@ -23,8 +23,6 @@ data class Word(
         meaning = meaning.lowercase().replaceFirstChar { it.uppercase() } // 'meaning' alanını küçük yapıp baş harfini büyük yap
         meaning2 = meaning2.lowercase().replaceFirstChar { it.uppercase() } // 'meaning2' alanını küçük yapıp baş harfini büyük yap
         meaning3 = meaning3.lowercase().replaceFirstChar { it.uppercase() } // 'meaning3' alanını küçük yapıp baş harfini büyük yap
-        exampleSentence = exampleSentence.lowercase().replaceFirstChar { it.uppercase() } // 'exampleSentence' alanını küçük yapıp baş harfini büyük yap
-        exampleSentenceTranslation = exampleSentenceTranslation.lowercase().replaceFirstChar { it.uppercase() } // 'exampleSentenceTranslation' alanını küçük yapıp baş harfini büyük yap
     }
 }
 

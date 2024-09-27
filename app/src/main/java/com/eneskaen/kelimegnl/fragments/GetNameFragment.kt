@@ -49,6 +49,46 @@ class GetNameFragment : Fragment() {
     ): View? {
         binding = FragmentGetNameBinding.inflate(inflater, container, false)
 
+        setUpViewModels()
+        setUpSeekBar()
+        setUpAnims()
+        getNameNextButtonOnClickListener()
+
+        return binding.root
+    }
+
+    private fun getNameNextButtonOnClickListener() {
+
+        binding.getNameNextButton.setOnClickListener {
+
+            val name = binding.getNameTextInputLayout.editText?.text.toString().trim()
+            if (name.isNotEmpty()){
+
+                val newUser = User(
+                    0,
+                    name,
+                    selectedOption,
+                    10,
+                    0,
+                    99999 //İlk kez kelime oluştururkenki değer
+                )
+
+                userViewModel.insert(newUser)
+
+                readWordsFromTextFile(requireContext())
+
+            }
+            else{
+                binding.getNameTextInputLayout.error = "Lütfen bir isim giriniz"
+            }
+        }
+    }
+
+    private fun getRandomWord(user: User) {
+        wordViewModel.getRandomWord(user.engLevel.toString())
+    }
+
+    private fun setUpViewModels() {
         //DAO
         val userDao = UserDatabase.getDatabase(requireContext()).userDao()
         val wordDao = WordDatabase.getDatabase(requireContext()).wordDao()
@@ -64,32 +104,6 @@ class GetNameFragment : Fragment() {
         val userFactory = UserViewModelFactory(repository)
         userViewModel = ViewModelProvider(this, userFactory).get(UserViewModel::class.java)
 
-
-        setUpSeekBar()
-        setUpAnims()
-
-        binding.getNameNextButton.setOnClickListener {
-
-            val name = binding.getNameTextInputLayout.editText?.text.toString().trim()
-            if (name.isNotEmpty()){
-
-                userViewModel.insert(User(0, name, selectedOption))
-                readWordsFromTextFile(requireContext())
-                wordViewModel.getRandomWord(userViewModel.user.value?.engLevel.toString())
-                wordViewModel.randomWord.observe(viewLifecycleOwner){
-                    if (it == null){
-                        val intent = Intent(requireContext(), StartingActivity::class.java)
-                        startActivity(intent)
-                    }
-                }
-
-            }
-            else{
-                binding.getNameTextInputLayout.error = "Lütfen bir isim giriniz"
-            }
-        }
-        // Inflate the layout for this fragment
-        return binding.root
     }
 
     private fun readWordsFromTextFile(context: Context) {
@@ -110,7 +124,6 @@ class GetNameFragment : Fragment() {
 
     private fun insertWordsToRoomDB(words: List<Word>) {
         wordViewModel.insertWords(words)
-
     }
 
     private fun setUpAnims() {
