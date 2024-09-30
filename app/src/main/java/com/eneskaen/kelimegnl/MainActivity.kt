@@ -36,23 +36,15 @@ import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    lateinit var userViewModel: UserViewModel
-    lateinit var wordViewModel: WordViewModel
-    lateinit var currentUser: User
-    lateinit var currentWord: Word
-    private val englishLevels = arrayOf("A1", "A2", "B1", "B2", "C1")
-    lateinit var dialog: Dialog
-    lateinit var wordDialogSoundButton: ImageView
-    private var downX = 0f
-    private var upX = 0f
-    private val SWIPE_THRESHOLD = 150 // Kaydırma hareketi için minimum mesafe
     private var mode: Int = -1
+    private var isHomeFragmentFirstLoad = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        mode = intent.getIntExtra("MODE_KEY", -1)
+        mode = intent.getIntExtra("MODE_KEY", 0)
         Log.d("MainActivityModeKontrol", "Received mode: $mode") // Log ekleyin
         replaceFragment(HomeFragment())
         setUpBottomNavbar()
@@ -72,17 +64,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
-
-        // Eğer fragment HomeFragment ise, mevcut fragment'ın arguments'larını ayarlayın
-        if (fragment is HomeFragment) {
-            val bundle = Bundle().apply {
-                putInt("MODE_KEY", mode)
+        val bundle = Bundle().apply {
+            if (fragment is HomeFragment) {
+                if (mode == 1 && isHomeFragmentFirstLoad){ //
+                    putInt("MODE_KEY", 1) // İlk kez HomeFragment'e 1 gönder
+                    isHomeFragmentFirstLoad = false // Sonraki yüklemelerde artık 0 göndereceğiz
+                }else{
+                    putInt("MODE_KEY", 0) // Diğer fragment'lar için her zaman 0 gönder
+                    isHomeFragmentFirstLoad = false // Sonraki yüklemelerde artık 0 göndereceğiz
+                }
+            } else {
+                putInt("MODE_KEY", 0) // Diğer fragment'lar için her zaman 0 gönder
             }
-            fragment.arguments = bundle
         }
+        fragment.arguments = bundle
 
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.mainActivityFrameLayout, fragment) // Burada fragment parametresini kullanın
+        fragmentTransaction.replace(R.id.mainActivityFrameLayout, fragment)
         fragmentTransaction.commit()
     }
 }

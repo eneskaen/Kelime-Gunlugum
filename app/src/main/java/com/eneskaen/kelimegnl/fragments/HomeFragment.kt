@@ -17,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.eneskaen.kelimegnl.MainActivity
 import com.eneskaen.kelimegnl.R
 import com.eneskaen.kelimegnl.database.UserDatabase
 import com.eneskaen.kelimegnl.database.WordDatabase
@@ -46,7 +47,6 @@ class HomeFragment : Fragment() {
     lateinit var wordDialogSoundButton : ImageView
     private lateinit var randomWords: List<Word>
     private var currentPosition = 0
-    private var maxPosition = 0
     var mode: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,6 +143,9 @@ class HomeFragment : Fragment() {
                 randomWords = it
                 currentWord = randomWords[currentPosition]
                 updateCardViewUI(currentWord)
+                if (randomWords.size == currentUser.dailyWordLimit){
+                    updateWords()
+                }
                 updateDialogUI(currentWord)
             }
         }
@@ -169,7 +172,6 @@ class HomeFragment : Fragment() {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
             dialog.show()
-            updateWords()
             updateUser(today())
             updateDialogUI(currentWord)
 
