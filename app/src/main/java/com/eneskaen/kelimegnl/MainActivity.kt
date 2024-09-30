@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import com.eneskaen.kelimegnl.database.UserDatabase
 import com.eneskaen.kelimegnl.database.WordDatabase
@@ -44,12 +46,14 @@ class MainActivity : AppCompatActivity() {
     private var downX = 0f
     private var upX = 0f
     private val SWIPE_THRESHOLD = 150 // Kaydırma hareketi için minimum mesafe
-
+    private var mode: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        mode = intent.getIntExtra("MODE_KEY", -1)
+        Log.d("MainActivityModeKontrol", "Received mode: $mode") // Log ekleyin
         replaceFragment(HomeFragment())
         setUpBottomNavbar()
     }
@@ -66,10 +70,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
+
+        // Eğer fragment HomeFragment ise, mevcut fragment'ın arguments'larını ayarlayın
+        if (fragment is HomeFragment) {
+            val bundle = Bundle().apply {
+                putInt("MODE_KEY", mode)
+            }
+            fragment.arguments = bundle
+        }
+
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.mainActivityFrameLayout, fragment)
+        fragmentTransaction.replace(R.id.mainActivityFrameLayout, fragment) // Burada fragment parametresini kullanın
         fragmentTransaction.commit()
     }
 }

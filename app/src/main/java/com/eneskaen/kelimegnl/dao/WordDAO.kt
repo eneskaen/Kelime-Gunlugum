@@ -32,8 +32,8 @@ interface WordDAO {
     @Query("select * from words where id = :wordId limit 1")
     suspend fun getWordById(wordId: Int?): Word?
 
-    @Query("select * from words where isActivated = 1 order by id desc")
-    suspend fun getActivatedWords(): List<Word>
+    @Query("select * from words where learnedDate = :date")
+    suspend fun getCurrentWords(date : String): List<Word>
 
 
 

@@ -29,6 +29,9 @@ import com.eneskaen.kelimegnl.viewmodel.UserViewModel
 import com.eneskaen.kelimegnl.viewmodel.UserViewModelFactory
 import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class HomeFragment : Fragment() {
@@ -44,12 +47,22 @@ class HomeFragment : Fragment() {
     private lateinit var randomWords: List<Word>
     private var currentPosition = 0
     private var maxPosition = 0
+    var mode: Int = -1
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            mode = it.getInt("MODE_KEY", -1)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
         setUpDialog()
 
         wordDialogSoundButton = dialog.findViewById<ImageView>(R.id.wordDialogSoundButton)
@@ -63,7 +76,11 @@ class HomeFragment : Fragment() {
         dialog.setOnDismissListener {
             dialog.dismiss()
         }
-
+        //isLearned Kısmı da tamam. Şimdi yapılacak şey word data classında isactivated yerine learnDate ekleyip 10lu deste olarak gelen kelimelerin bu değerlerine bugünün tarihini yazdırmak.
+        //Bu sayede uygulamayı açarken şu kontrolü yaptırabilirim.
+        //select count(*) from words where learnDate = bugünün tarihi
+        //Bunu kontrol ettirip count = 0 ise yeni bir gün. yeni kelime oluşturacağım.
+        //count > 0 bugün daha önce kelime oluşturmuş. Sadece bu kelimeleri çekeceğim geri.
         return binding.root
     }
 
@@ -93,25 +110,56 @@ class HomeFragment : Fragment() {
         userViewModel.user.observe(viewLifecycleOwner){
             it?.let {
                 currentUser = it
-                observeWords()
+                userViewModel.user.removeObservers(viewLifecycleOwner)
+                if (mode == 1){ //Mode 1 ise kelime oluşturmaya ihtiyaç var.
+                    createNewWords()
+                }else if (mode == 0){//Mode 0 ise sadece kelime okuyacaz DBden. Kelimeler belli zaten.
+                    observeCurrentWords()
+                }
+
 
             }
         }
     }
 
-    private fun observeWords() {
-        Log.d("Deneme123", "observeWord")
-        wordViewModel.getRandomWords(currentUser.engLevel.toString(), currentUser.dailyWordLimit)
-        wordViewModel.randomWords.observe(viewLifecycleOwner){
+    private fun observeCurrentWords() {
+        today()
+        wordViewModel.getCurrentWords(today())
+        wordViewModel.currentWords.observe(viewLifecycleOwner){
             it?.let {
-                wordViewModel.randomWords.removeObservers(viewLifecycleOwner)
                 randomWords = it
                 currentWord = randomWords[currentPosition]
                 updateCardViewUI(currentWord)
                 updateDialogUI(currentWord)
-
             }
         }
+    }
+
+    private fun createNewWords() {
+        wordViewModel.getRandomWords(currentUser.engLevel.toString(), currentUser.dailyWordLimit)
+        wordViewModel.randomWords.observe(viewLifecycleOwner){
+            it?.let {
+
+                randomWords = it
+                currentWord = randomWords[currentPosition]
+                updateCardViewUI(currentWord)
+                updateDialogUI(currentWord)
+            }
+        }
+    }
+
+    private fun updateWords(){
+        randomWords?.let {
+            it.forEach { word ->
+                word.learnedDate = today()
+                wordViewModel.update(word)
+            }
+        }
+    }
+
+    private fun updateUser(todayDate: String) {
+        val updatedUser = currentUser.copy(lastWordUpdateDate = todayDate)
+        userViewModel.update(updatedUser)
     }
 
     private fun mainActivityWordCardClickListener() {
@@ -121,6 +169,8 @@ class HomeFragment : Fragment() {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
             dialog.show()
+            updateWords()
+            updateUser(today())
             updateDialogUI(currentWord)
 
         }
@@ -228,61 +278,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun previousWordWithAnimation(view: View) {
-        currentPosition -= 1
-        currentWord = randomWords[currentPosition]
-
-        view?.let {
-            it.translationX = 0f // Başlangıç pozisyonu normalde kalsın
-            it.alpha = 1f // Görünür olsun
-
-            it.animate()
-                .translationX(it.width.toFloat()) // Sağda kaydır
-                .alpha(0f) // Görünmez hale getir
-                .setDuration(200) // 200ms animasyon süresi
-                .withEndAction {
-                    // Yeni kelime yükle
-                    updateCardViewUI(currentWord)
-                    updateDialogUI(currentWord)
-                    it.translationX = -it.width.toFloat() // Çıkmadan önce tekrar ayarla
-                    it.alpha = 1f // Görünür hale getir
-                    // Sonra yeni kelimeyi içeri kaydır
-                    it.animate()
-                        .translationX(0f)
-                        .alpha(1f)
-                        .setDuration(200)
-                        .start()
-                }
-                .start()
-        }
+    private fun today() : String {
+        val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val todayDate = formatter.format(Date())
+        return todayDate
     }
-
-    private fun nextWordWithAnimation(view: View) {
-        currentPosition += 1
-        if (maxPosition<currentPosition){
-            maxPosition = currentPosition
-        }
-        currentWord = randomWords[currentPosition]
-
-        // Yeni kelime yüklendikten sonra dialog'u tekrar içeri kaydır
-        view?.let {
-            it.translationX = it.width.toFloat() // Başlangıç pozisyonu sağda olsun
-            it.alpha = 0f
-
-            it.animate()
-                .translationX(0f) // Eski yerine geri getir
-                .alpha(1f) // Görünürlüğü geri getir
-                .setDuration(200) // 200ms animasyon süresi
-                .start()
-        }
-    }
-
-
-
 
     private fun updateDialogUI(currentWordInFunc: Word) {
         Log.d("Deneme123", "updateDialogUI")
-
+        val currentUpdatedWord = currentWordInFunc.copy(isLearned = true)
+        wordViewModel.update(currentUpdatedWord)
 
         val wordDialogWordText = dialog.findViewById<TextView>(R.id.wordDialogWordText)
         val wordDialogEngLevelText = dialog.findViewById<TextView>(R.id.wordDialogEngLevelText)

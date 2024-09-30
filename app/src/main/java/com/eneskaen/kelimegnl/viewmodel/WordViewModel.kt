@@ -24,8 +24,9 @@ class WordViewModel(private val wordRepository: WordRepository) : ViewModel() {
     private val _randomWords = MutableLiveData<List<Word>>()
     val randomWords: LiveData<List<Word>> = _randomWords
 
-    private val _activatedWords = MutableLiveData<List<Word>>()
-    val activatedWords: LiveData<List<Word>> = _activatedWords
+    private val _currentWords = MutableLiveData<List<Word>>()
+    val currentWords: LiveData<List<Word>> = _currentWords
+
 
     fun update(word: Word) {
         viewModelScope.launch {
@@ -59,9 +60,9 @@ class WordViewModel(private val wordRepository: WordRepository) : ViewModel() {
         }
     }
 
-    fun getActivatedWords(){
+    fun getCurrentWords(date: String){
         viewModelScope.launch {
-            _activatedWords.value = wordRepository.getActivatedWords()
+            _currentWords.value = wordRepository.getCurrentWords(date)
         }
     }
 

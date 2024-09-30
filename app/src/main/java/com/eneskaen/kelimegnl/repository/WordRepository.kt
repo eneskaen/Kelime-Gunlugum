@@ -22,8 +22,8 @@ class WordRepository(private val wordDao: WordDAO) {
         return wordDao.getRandomWords(level, limit)
     }
 
-    suspend fun getActivatedWords(): List<Word> {
-        return wordDao.getActivatedWords()
+    suspend fun getCurrentWords(date : String): List<Word> {
+        return wordDao.getCurrentWords(date)
     }
 
     suspend fun getWordByString(wordString: String): Word? {

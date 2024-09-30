@@ -17,13 +17,5 @@ data class Word(
     var isLearned: Boolean = false,
     var isActivated: Boolean = false,
     var learnedDate: String = ""
-) {
-    // Constructor
-    init {
-        word = word.lowercase().replaceFirstChar { it.uppercase() } // 'word' alanını küçük yapıp baş harfini büyük yap
-        meaning = meaning.lowercase().replaceFirstChar { it.uppercase() } // 'meaning' alanını küçük yapıp baş harfini büyük yap
-        meaning2 = meaning2.lowercase().replaceFirstChar { it.uppercase() } // 'meaning2' alanını küçük yapıp baş harfini büyük yap
-        meaning3 = meaning3.lowercase().replaceFirstChar { it.uppercase() } // 'meaning3' alanını küçük yapıp baş harfini büyük yap
-    }
-}
+)
 

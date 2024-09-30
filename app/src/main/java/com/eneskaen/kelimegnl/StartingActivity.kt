@@ -30,6 +30,9 @@ import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class StartingActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -45,6 +48,12 @@ class StartingActivity : AppCompatActivity() {
 
     }
 
+    private fun Today() : String {
+        val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val todayDate = formatter.format(Date())
+        return todayDate
+    }
+
     private fun observeUser() {
         userViewModel.user.observe(this){
             if (it != null){// Kullanıcı daha önce oluştuysa
@@ -52,9 +61,12 @@ class StartingActivity : AppCompatActivity() {
                     Log.d("StartingActivityLogu", "Kullanıcı ilk kelimesi oluşturuluyor.")
                     fetchFirstRandomWords(it)
                 }
-                else{//Kullanıcı daha önce kelimeler oluşturmuşsa
+                else if (it.lastWordUpdateDate == Today()){ //Kullanıcı BUGÜN zaten kelime oluşturmuş
+                    startMainActivity(0)
+                }
+                else{//Kullanıcı BUGÜNDEN ÖNCE kelime oluşturmuşsa
                     Log.d("StartingActivityLogu", "Kullanıcı daha önce kelimeler oluşturmuş ${it.lastWordUpdateDate}")
-                    startMainActivity()
+                    startMainActivity(1)
                 }
 
             }
@@ -69,20 +81,29 @@ class StartingActivity : AppCompatActivity() {
     }
 
     private fun fetchFirstRandomWords(user: User) {
+        updateUserData(user)
+
+        startMainActivity(1)
         wordViewModel.getRandomWords(user.engLevel.toString(), user.dailyWordLimit)
 
         wordViewModel.randomWords.observe(this) {
             it?.let {
                 wordViewModel.randomWords.removeObservers(this)
+                updateUserData(user)
 
-                val updatedUser = user.copy(lastWordUpdateDate = "it[0].id")
-                userViewModel.update(updatedUser)
+                startMainActivity(1)
 
-                startMainActivity()
             } ?: run {
                 retryFetchFirstRandomWordsWithDelay(user)
             }
         }
+    }
+
+    private fun updateUserData(user: User) {
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+        val currentDate = dateFormat.format(Date())
+        val updatedUser = user.copy(lastWordUpdateDate = currentDate.toString())
+        userViewModel.update(updatedUser)
     }
 
 
@@ -93,9 +114,10 @@ class StartingActivity : AppCompatActivity() {
         }
     }
 
-    private fun startMainActivity() {
+    private fun startMainActivity(mode: Int) { //Mode 1 ise kelime oluşturmaya ihtiyaç var. Mode 0 ise sadece kelime okuyacaz dbden. Kelimeler belli zaten.
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.putExtra("MODE_KEY", mode)
         startActivity(intent)
         overridePendingTransition(0, 0)
         finish()
