@@ -21,6 +21,17 @@ class WordViewModel(private val wordRepository: WordRepository) : ViewModel() {
     private val _searchedWordById = MutableLiveData<Word?>()
     val searchedWordById: LiveData<Word?> = _searchedWordById
 
+    private val _randomWords = MutableLiveData<List<Word>>()
+    val randomWords: LiveData<List<Word>> = _randomWords
+
+    private val _activatedWords = MutableLiveData<List<Word>>()
+    val activatedWords: LiveData<List<Word>> = _activatedWords
+
+    fun update(word: Word) {
+        viewModelScope.launch {
+            wordRepository.update(word)
+        }
+    }
 
     // Kelimeleri veritabanına eklemek
     fun insertWords(words: List<Word>) {
@@ -39,6 +50,18 @@ class WordViewModel(private val wordRepository: WordRepository) : ViewModel() {
     fun getRandomWord(level: String) {
         viewModelScope.launch {
             _randomWord.value = wordRepository.getRandomWord(level)
+        }
+    }
+
+    fun getRandomWords(level: String, limit: Int) {
+        viewModelScope.launch {
+            _randomWords.value = wordRepository.getRandomWords(level, limit)
+        }
+    }
+
+    fun getActivatedWords(){
+        viewModelScope.launch {
+            _activatedWords.value = wordRepository.getActivatedWords()
         }
     }
 

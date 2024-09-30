@@ -15,6 +15,7 @@ data class Word(
     var exampleSentence: String = "",
     var exampleSentenceTranslation: String = "",
     var isLearned: Boolean = false,
+    var isActivated: Boolean = false,
     var learnedDate: String = ""
 ) {
     // Constructor

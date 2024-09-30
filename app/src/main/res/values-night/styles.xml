@@ -63,5 +63,16 @@
         <item name="android:windowExitAnimation">@anim/dialog_exit</item>
     </style>
 
+    <style name="MainActivityKelimeListesiVector">
+        <item name="android:background">@drawable/vector_kelime_listesi_darkmode</item>
+    </style>
+
+    <style name="CardReverse">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="SoundImageButton">
+        <item name="android:src">@drawable/round_volume_up_24_darkmode</item>
+    </style>
 
 </resources>

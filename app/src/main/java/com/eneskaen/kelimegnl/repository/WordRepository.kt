@@ -1,5 +1,6 @@
 package com.eneskaen.kelimegnl.repository
 
+import androidx.lifecycle.LiveData
 import com.eneskaen.kelimegnl.dao.WordDAO
 import com.eneskaen.kelimegnl.model.Word
 
@@ -17,12 +18,24 @@ class WordRepository(private val wordDao: WordDAO) {
         return wordDao.getRandomWord(level)
     }
 
+    suspend fun getRandomWords(level: String, limit: Int): List<Word> {
+        return wordDao.getRandomWords(level, limit)
+    }
+
+    suspend fun getActivatedWords(): List<Word> {
+        return wordDao.getActivatedWords()
+    }
+
     suspend fun getWordByString(wordString: String): Word? {
         return wordDao.getWordByString(wordString)
     }
 
     suspend fun getWordById(wordId: Int?): Word? {
         return wordDao.getWordById(wordId)
+    }
+
+    suspend fun update(word: Word) {
+        wordDao.update(word)
     }
 
 

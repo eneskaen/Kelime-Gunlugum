@@ -48,13 +48,12 @@ class StartingActivity : AppCompatActivity() {
     private fun observeUser() {
         userViewModel.user.observe(this){
             if (it != null){// Kullanıcı daha önce oluştuysa
-                if(it.lastWordId == 99999){ //İlk kez random kelime oluşturulacaksa
+                if(it.lastWordUpdateDate == "99999"){ //İlk kez random kelime oluşturulacaksa
                     Log.d("StartingActivityLogu", "Kullanıcı ilk kelimesi oluşturuluyor.")
-                    wordViewModel.getRandomWord(it.engLevel.toString())
-                    fetchFirstRandomWord(it)
+                    fetchFirstRandomWords(it)
                 }
                 else{//Kullanıcı daha önce kelimeler oluşturmuşsa
-                    Log.d("StartingActivityLogu", "Kullanıcı daha önce kelimeler oluşturmuş ${it.lastWordId}")
+                    Log.d("StartingActivityLogu", "Kullanıcı daha önce kelimeler oluşturmuş ${it.lastWordUpdateDate}")
                     startMainActivity()
                 }
 
@@ -69,28 +68,28 @@ class StartingActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchFirstRandomWord(user: User) {
-        wordViewModel.getRandomWord(user.engLevel.toString())
+    private fun fetchFirstRandomWords(user: User) {
+        wordViewModel.getRandomWords(user.engLevel.toString(), user.dailyWordLimit)
 
-        wordViewModel.randomWord.observe(this) { word ->
-            word?.let {
-                wordViewModel.randomWord.removeObservers(this)
+        wordViewModel.randomWords.observe(this) {
+            it?.let {
+                wordViewModel.randomWords.removeObservers(this)
 
-                val updatedUser = user.copy(lastWordId = it.id)
+                val updatedUser = user.copy(lastWordUpdateDate = "it[0].id")
                 userViewModel.update(updatedUser)
 
                 startMainActivity()
             } ?: run {
-                retryFetchFirstRandomWordWithDelay(user)
+                retryFetchFirstRandomWordsWithDelay(user)
             }
         }
     }
 
 
-    private fun retryFetchFirstRandomWordWithDelay(user: User) {
+    private fun retryFetchFirstRandomWordsWithDelay(user: User) {
         lifecycleScope.launch {
             delay(1000)
-            fetchFirstRandomWord(user)
+            fetchFirstRandomWords(user)
         }
     }
 

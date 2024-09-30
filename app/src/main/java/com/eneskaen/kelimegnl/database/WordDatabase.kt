@@ -13,7 +13,6 @@ import kotlinx.coroutines.withContext
 abstract class WordDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDAO
-
     companion object {
         @Volatile
         private var INSTANCE: WordDatabase? = null

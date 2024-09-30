@@ -10,6 +10,5 @@ data class User(
     val name: String,
     val engLevel: Int = 0,
     val dailyWordLimit : Int = 10,
-    val dailyWordCount : Int = 0,
-    val lastWordId: Int?
+    val lastWordUpdateDate : String = ""
 )

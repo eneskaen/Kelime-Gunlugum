@@ -1,23 +1,14 @@
 package com.eneskaen.kelimegnl.fragments
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.eneskaen.kelimegnl.R
-import com.eneskaen.kelimegnl.StartingActivity
 import com.eneskaen.kelimegnl.anims.anims
-import com.eneskaen.kelimegnl.dao.WordDAO
 import com.eneskaen.kelimegnl.database.UserDatabase
 import com.eneskaen.kelimegnl.database.WordDatabase
 import com.eneskaen.kelimegnl.databinding.FragmentGetNameBinding
@@ -31,9 +22,6 @@ import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.io.BufferedReader
-import java.io.File
-import java.io.InputStreamReader
 
 class GetNameFragment : Fragment() {
 
@@ -69,8 +57,7 @@ class GetNameFragment : Fragment() {
                     name,
                     selectedOption,
                     10,
-                    0,
-                    99999 //İlk kez kelime oluştururkenki değer
+                    "99999" //İlk kez kelime oluştururkenki değer
                 )
 
                 userViewModel.insert(newUser)
@@ -82,10 +69,6 @@ class GetNameFragment : Fragment() {
                 binding.getNameTextInputLayout.error = "Lütfen bir isim giriniz"
             }
         }
-    }
-
-    private fun getRandomWord(user: User) {
-        wordViewModel.getRandomWord(user.engLevel.toString())
     }
 
     private fun setUpViewModels() {

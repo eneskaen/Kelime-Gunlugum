@@ -8,6 +8,7 @@
         android:layout_marginHorizontal="30dp"
         style="@style/Card"
         app:cardElevation="15dp"
+        android:id="@+id/wordDialogCardRootView"
         >
         <LinearLayout
             android:layout_width="40dp"
@@ -64,9 +65,9 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:background="?attr/selectableItemBackground"
+                    style="@style/SoundImageButton"
                     android:clickable="true"
                     android:focusable="true"
-                    android:src="@drawable/round_volume_up_24"
                     android:id="@+id/wordDialogSoundButton" />
 
                 <TextView
@@ -92,7 +93,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightmode_textcolor"
+                    style="@style/CardReverse"
                     android:layout_marginHorizontal="30dp" />
 
                 <TextView
@@ -147,7 +148,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightmode_textcolor"
+                    style="@style/CardReverse"
                     android:layout_marginHorizontal="30dp" />
 
             </LinearLayout>
@@ -214,7 +215,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightmode_textcolor"
+                    style="@style/CardReverse"
                     android:layout_marginHorizontal="30dp" />
 
             </LinearLayout>
@@ -279,7 +280,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightmode_textcolor"
+                    style="@style/CardReverse"
                     android:layout_marginHorizontal="30dp" />
             </LinearLayout>
 
@@ -299,7 +300,7 @@
                     android:textStyle="bold|italic"
                     android:alpha="0.8"
                     android:textSize="11sp"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:fontFamily="@font/poppins"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginVertical="10dp" />
@@ -312,7 +313,7 @@
                     style="@style/Text"
                     android:textStyle="bold|italic"
                     android:alpha="0.8"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:textSize="11sp"
                     android:fontFamily="@font/poppins"
                     android:layout_marginHorizontal="30dp"
@@ -322,19 +323,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
+                    android:layout_gravity="end|center_vertical"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text=""
-                        style="@style/Text"
-                        android:alpha="0.8"
-                        android:textSize="11sp"
-                        android:textAlignment="textStart"
-                        android:fontFamily="@font/poppins"
-                        android:layout_marginVertical="10dp"  />
 
                     <TextView
                         android:layout_width="0dp"
