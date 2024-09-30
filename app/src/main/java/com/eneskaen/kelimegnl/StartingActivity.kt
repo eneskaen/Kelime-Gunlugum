@@ -54,29 +54,30 @@ class StartingActivity : AppCompatActivity() {
         return todayDate
     }
 
-    private fun observeUser() {
-        userViewModel.user.observe(this){
-            if (it != null){// Kullanıcı daha önce oluştuysa
-                if(it.lastWordUpdateDate == "99999"){ //İlk kez random kelime oluşturulacaksa
-                    Log.d("StartingActivityLogu", "Kullanıcı ilk kelimesi oluşturuluyor.")
-                    fetchFirstRandomWords(it)
-                }
-                else if (it.lastWordUpdateDate == Today()){ //Kullanıcı BUGÜN zaten kelime oluşturmuş
-                    startMainActivity(0)
-                }
-                else{//Kullanıcı BUGÜNDEN ÖNCE kelime oluşturmuşsa
-                    Log.d("StartingActivityLogu", "Kullanıcı daha önce kelimeler oluşturmuş ${it.lastWordUpdateDate}")
-                    startMainActivity(1)
-                }
 
-            }
-            else{ // Kullanıcı daha önce oluşturulmamışsa
+    private fun observeUser() {
+        userViewModel.user.observe(this) {
+            it?.let { user ->
+                userViewModel.user.removeObservers(this)
+                when {
+                    user.lastWordUpdateDate == "99999" -> { // İlk kez kelime oluşturulacaksa
+                        Log.d("StartingActivityLogu", "Kullanıcı ilk kelimesi oluşturuluyor.")
+                        fetchFirstRandomWords(user)
+                    }
+                    user.lastWordUpdateDate == Today() -> { // Kullanıcı BUGÜN kelime oluşturmuşsa
+                        startMainActivity(0)
+                    }
+                    else -> { // Kullanıcı daha önce kelime oluşturmuş
+                        Log.d("StartingActivityLogu", "Kullanıcı daha önce kelimeler oluşturmuş ${user.lastWordUpdateDate}")
+                        startMainActivity(1)
+                    }
+                }
+            } ?: run {
+                // Kullanıcı daha önce oluşturulmamışsa
                 findViewById<FragmentContainerView>(R.id.fragmentContainerView).visibility = View.VISIBLE
-                val navHostFragment = supportFragmentManager
-                    .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
                 navController = navHostFragment.navController
             }
-
         }
     }
 
@@ -84,19 +85,19 @@ class StartingActivity : AppCompatActivity() {
         updateUserData(user)
 
         startMainActivity(1)
-        wordViewModel.getRandomWords(user.engLevel.toString(), user.dailyWordLimit)
-
-        wordViewModel.randomWords.observe(this) {
-            it?.let {
-                wordViewModel.randomWords.removeObservers(this)
-                updateUserData(user)
-
-                startMainActivity(1)
-
-            } ?: run {
-                retryFetchFirstRandomWordsWithDelay(user)
-            }
-        }
+//        wordViewModel.getRandomWords(user.engLevel.toString(), user.dailyWordLimit)
+//
+//        wordViewModel.randomWords.observe(this) {
+//            it?.let {
+//                wordViewModel.randomWords.removeObservers(this)
+//                updateUserData(user)
+//
+//                startMainActivity(1)
+//
+//            } ?: run {
+//                retryFetchFirstRandomWordsWithDelay(user)
+//            }
+//        }
     }
 
     private fun updateUserData(user: User) {

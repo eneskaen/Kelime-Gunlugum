@@ -88,13 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/card_linear_layout_bg"
                 android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    style="@style/CardReverse"
-                    android:layout_marginHorizontal="30dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -145,11 +140,6 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    style="@style/CardReverse"
-                    android:layout_marginHorizontal="30dp" />
 
             </LinearLayout>
 
@@ -157,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/wordDialogLinear2"
+                android:background="@drawable/card_linear_layout_bg"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -212,18 +203,13 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    style="@style/CardReverse"
-                    android:layout_marginHorizontal="30dp" />
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/wordDialogLinear3"
+                android:background="@drawable/card_linear_layout_bg"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
@@ -277,17 +263,13 @@
 
 
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    style="@style/CardReverse"
-                    android:layout_marginHorizontal="30dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/wordDialogLinear4"
+                android:background="@drawable/card_linear_layout_bg"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 

@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         mode = intent.getIntExtra("MODE_KEY", 0)
         Log.d("MainActivityModeKontrol", "Received mode: $mode") // Log ekleyin
         replaceFragment(HomeFragment())
         setUpBottomNavbar()
+
     }
 
     private fun setUpBottomNavbar() {

@@ -27,6 +27,5 @@ abstract class UserDatabase : RoomDatabase() {
              instance
          }
         }
-
     }
 }

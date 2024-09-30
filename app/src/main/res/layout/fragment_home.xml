@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mainActivityUserNameText"
-            android:text="Hoşgeldin Enes Kaan"
+            android:text=""
             style="@style/Text"
             android:fontFamily="@font/inter"
             android:textStyle="bold"
@@ -47,6 +47,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="50dp"
             android:layout_marginHorizontal="30dp" />
+
+        <ProgressBar
+            android:id="@+id/mainActivityProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="#D3C1FF"
+            android:elevation="16dp"
+            app:layout_constraintTop_toTopOf="@id/mainActivityWordCardView"
+            app:layout_constraintBottom_toBottomOf="@id/mainActivityWordCardView"
+            app:layout_constraintStart_toStartOf="@id/mainActivityWordCardView"
+            app:layout_constraintEnd_toEndOf="@id/mainActivityWordCardView"/>
 
         <androidx.cardview.widget.CardView
             style="@style/Card"
@@ -82,6 +93,7 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+
                 <TextView
                     style="@style/Text"
                     android:id="@+id/mainActivityWordCountText"
@@ -98,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:fontFamily="@font/inter"
-                    android:text="Word Text"
+                    android:text=""
                     android:textAlignment="center"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -113,7 +125,7 @@
                     android:alpha="0.8"
                     android:textStyle="bold"
                     android:fontFamily="@font/poppins"
-                    android:text="Word Meaning Text"
+                    android:text=""
                     android:textSize="13sp" />
 
 

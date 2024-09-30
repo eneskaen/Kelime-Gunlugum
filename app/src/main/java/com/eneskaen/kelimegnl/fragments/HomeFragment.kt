@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.eneskaen.kelimegnl.MainActivity
 import com.eneskaen.kelimegnl.R
 import com.eneskaen.kelimegnl.database.UserDatabase
@@ -30,18 +32,23 @@ import com.eneskaen.kelimegnl.viewmodel.UserViewModel
 import com.eneskaen.kelimegnl.viewmodel.UserViewModelFactory
 import com.eneskaen.kelimegnl.viewmodel.WordViewModel
 import com.eneskaen.kelimegnl.viewmodel.WordViewModelFactory
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment() , TextToSpeech.OnInitListener{
 
     lateinit var binding : FragmentHomeBinding
     lateinit var userViewModel : UserViewModel
     lateinit var wordViewModel : WordViewModel
     lateinit var currentUser : User
     lateinit var currentWord : Word
+    private lateinit var tts: TextToSpeech
+    private var isTTSInitialized = false
     private val englishLevels = arrayOf("A1", "A2", "B1", "B2", "C1")
     lateinit var dialog: Dialog
     lateinit var wordDialogSoundButton : ImageView
@@ -73,17 +80,25 @@ class HomeFragment : Fragment() {
 
         mainActivityWordCardClickListener()
 
+        tts = TextToSpeech(requireContext(),this)
+
         dialog.setOnDismissListener {
             dialog.dismiss()
         }
-        //isLearned Kısmı da tamam. Şimdi yapılacak şey word data classında isactivated yerine learnDate ekleyip 10lu deste olarak gelen kelimelerin bu değerlerine bugünün tarihini yazdırmak.
-        //Bu sayede uygulamayı açarken şu kontrolü yaptırabilirim.
-        //select count(*) from words where learnDate = bugünün tarihi
-        //Bunu kontrol ettirip count = 0 ise yeni bir gün. yeni kelime oluşturacağım.
-        //count > 0 bugün daha önce kelime oluşturmuş. Sadece bu kelimeleri çekeceğim geri.
+
         return binding.root
     }
 
+    override fun onInit(status: Int) {
+        val result = tts.setLanguage(Locale.ENGLISH)
+        isTTSInitialized = true
+    }
+
+    private fun speak(text: String){
+        if (isTTSInitialized){
+            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+        }
+    }
     private fun setUpViewModels() {
         Log.d("Deneme123", "setUpViewModels")
         val wordDao = WordDatabase.getDatabase(requireContext()).wordDao()
@@ -129,6 +144,7 @@ class HomeFragment : Fragment() {
             it?.let {
                 randomWords = it
                 currentWord = randomWords[currentPosition]
+                binding.mainActivityProgressBar.visibility = View.GONE
                 updateCardViewUI(currentWord)
                 updateDialogUI(currentWord)
             }
@@ -136,20 +152,37 @@ class HomeFragment : Fragment() {
     }
 
     private fun createNewWords() {
+        // İlk olarak random kelimeleri gözlemleyelim.
         wordViewModel.getRandomWords(currentUser.engLevel.toString(), currentUser.dailyWordLimit)
-        wordViewModel.randomWords.observe(viewLifecycleOwner){
-            it?.let {
 
+        wordViewModel.randomWords.observe(viewLifecycleOwner) { words ->
+            words?.let {
                 randomWords = it
-                currentWord = randomWords[currentPosition]
-                updateCardViewUI(currentWord)
-                if (randomWords.size == currentUser.dailyWordLimit){
+
+                // Eğer kelime sayısı yeterli değilse bekle ve tekrar dene.
+                if (randomWords.size < currentUser.dailyWordLimit) {
+                    retryFetchWordsWithDelay() // Asenkron veri tekrar çekilecek.
+                } else {
+                    // Yeterli kelime varsa, kelimeleri sırala ve UI'yi güncelle
+                    randomWords = randomWords.sortedBy { it.word.lowercase() }
+                    currentWord = randomWords[currentPosition]
                     updateWords()
+                    binding.mainActivityProgressBar.visibility = View.GONE
+                    updateCardViewUI(currentWord)
+                    updateDialogUI(currentWord)
                 }
-                updateDialogUI(currentWord)
             }
         }
     }
+
+    // Kelime sayısı yeterli değilse, bekleyip tekrar deneyecek.
+    private fun retryFetchWordsWithDelay() {
+        lifecycleScope.launch {
+            delay(1000) // 1 saniye bekle
+            wordViewModel.getRandomWords(currentUser.engLevel.toString(), currentUser.dailyWordLimit)
+        }
+    }
+
 
     private fun updateWords(){
         randomWords?.let {
@@ -177,8 +210,6 @@ class HomeFragment : Fragment() {
 
         }
     }
-
-
 
 
     private fun setUpDialog() {
@@ -248,8 +279,6 @@ class HomeFragment : Fragment() {
                         .start()
                 }
                 .start()
-        } else {
-            Toast.makeText(requireContext(), "İlk kelime!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -275,8 +304,6 @@ class HomeFragment : Fragment() {
                         .start()
                 }
                 .start()
-        } else {
-            Toast.makeText(requireContext(), "Günlük Kelime Listenin Sonuna Geldin!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -333,14 +360,11 @@ class HomeFragment : Fragment() {
             wordDialogLinear3.visibility = View.VISIBLE
             setMeaningText(3, currentWordInFunc.meaning3, wordDialogMeaning3Text, wordDialogMeaning3Type, wordDialogLinear3)
         }
-
-
     }
 
     private fun wordDialogSoundButtonClickListener() {
-        Log.d("Deneme123", "wordDialogSoundButtonClickListener")
         wordDialogSoundButton.setOnClickListener {
-
+            speak(currentWord.word)
         }
     }
 
@@ -366,6 +390,12 @@ class HomeFragment : Fragment() {
 
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (::tts.isInitialized){
+            tts.stop()
+            tts.shutdown()
+        }
+    }
 
 }
